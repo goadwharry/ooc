@@ -41,7 +41,7 @@ int main (int argc, char ** argv)
 			break;
 		default:
 			if (isdigit(** argv & 0xff))
-				addFirst(q, (void *) atoi(* argv));
+				addFirst(q, (void *) atol(* argv));
 			else
 				addFirst(q, * argv + 1);
 		}

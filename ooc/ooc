@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##! /usr/local/gnu/bin/bash
 #	use /bin/bash on linux
 #	cannot use sh on NeXT -- it forgets to remove the temporary file
@@ -43,7 +43,10 @@ targets:     -dc        make thunks for last 'class'
 	[ "$awk" ] ||
 	  { echo >&2 GNU awk not found; exit 1; }
 
-	for home in $HOME/oop/code/ooc/ $HOME/ooc/ooc/ \
+    # https://stackoverflow.com/questions/4774054/reliable-way-for-a-bash-script-to-get-the-full-path-to-itself
+    SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+	for home in $SCRIPTPATH $HOME/oop/code/ooc/ $HOME/ooc/ooc/ \
 	    $HOME/Documents/Vorlesungen/oop/code/ooc/ ''; do
 	  [ -d $home ] && break
 	done

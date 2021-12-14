@@ -8,6 +8,11 @@
 #	1234567890 d _Class	the static pointer
 #	1234567890 T Class	the function
 
+# 64 bit Linux
+#   nm -p produces lines
+#	1234567890abcdef0 d _Class	the static pointer
+#	1234567890abcdef0 T Class	the function
+
 # Solaris
 #   nm -p produces lines
 #	1234567890 b _Class	the static pointer
@@ -27,6 +32,7 @@
 
 NF != 3 || $1 !~ /^[0-9a-f]+$/		{ next }
 length($1) == 10 && $2 ~ /^[bd]$/	{ sysv[$3] = 1; next }
+length($1) == 16 && $2 ~ /^[bd]$/	{ linux64[$3] = 1; next }
 $2 ~ /^[bs]$/				{ bsd[$3] = 1; next }
 $2 == "T"				{ T[$3] = 1; next }
 
@@ -36,7 +42,9 @@ END {
 			names[n ++] = substr(name, 2)
 		else if ("_" name in sysv)
 			names[n ++] = name
-						# shellsort()
+		else if ("_" name in linux64)
+			names[n ++] = name
+	# shellsort()
 	for (gap = int(n/2); gap > 0; gap = int(gap/2))
 		for (i = gap; i < n; ++ i)
 			for (j = i-gap; j >= 0 && \
