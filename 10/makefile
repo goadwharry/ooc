@@ -13,9 +13,9 @@ sort	= Object.o Filter.o String.o List.o Sort.o
 all:		$t
 clean:				; rm -f $c $h $r $t *.o
 
-test::		cmd		;  cmd -fffv10 -- -f filename
-test::		wc		;  cat Wc.dc | wc - Wc.dc none-such
-test::		sort		;  cat Sort.d | sort -r - Sort.d
+test::		cmd		;  $(PWD)/cmd -fffv10 -- -f filename
+test::		wc		;  cat Wc.dc | $(PWD)/wc - Wc.dc none-such
+test::		sort		;  cat Sort.d | $(PWD)/sort -r - Sort.d
 
 cmd:		$(cmd)		; $(CC) $(CFLAGS) -o $@ $(cmd)
 wc:		$(wc)		; $(CC) $(CFLAGS) -o $@ $(wc)

@@ -12,10 +12,10 @@ value	= parse.o Object.o Node.o Symbol.o Symtab.o binary.o
 all:	$t
 clean:		; rm -f $c $(c:.c=.h) $r $t *.o
 
-test::	value	; echo 'let a = sin(1) + PI' | value
+test::	value	; echo 'let a = sin(1) + PI' | $(PWD)/value
 test::	value	; { echo 'def sqr = $$ * $$'; \
 		    echo 'def one = sqr(sin($$)) + sqr(cos($$))'; \
-		    echo 'one(10)'; } | value reclaim
+		    echo 'one(10)'; } | $(PWD)/value reclaim
 
 value:	$(value); $(CC) $(CFLAGS) -o $@ $(value) $(Lm) $(debug)
 

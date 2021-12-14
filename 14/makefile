@@ -17,14 +17,14 @@ all:		$t
 clean:			; rm -f $c $h $l $r $t *.o
 			  rm -rf *.dSYM
 
-test::		hello	;  hello
-test::		button	;  echo "a" | button
-test::		run	;  echo "20 + 30 * 40 = Q" | run
-test::		cbutton	;  echo a | cbutton
-test::		crun	;  echo "20 + 30 * 40 = Q" | crun
-test::		xhello	;- xhello $(host)
-test::		xbutton	;- XENVIRONMENT=Xapp xbutton $(host)
-test::		xrun	;  XENVIRONMENT=Xapp xrun $(host)
+test::		hello	;  $(PWD)/hello
+test::		button	;  echo "a" | $(PWD)/button
+test::		run	;  echo "20 + 30 * 40 = Q" | $(PWD)/run
+test::		cbutton	;  echo a | $(PWD)/cbutton
+test::		crun	;  echo "20 + 30 * 40 = Q" | $(PWD)/crun
+test::		xhello	;- $(PWD)/xhello $(host)
+test::		xbutton	;- XENVIRONMENT=Xapp $(PWD)/xbutton $(host)
+test::		xrun	;  XENVIRONMENT=Xapp $(PWD)/xrun $(host)
 
 hello:	 hello.o	; $(CC) $(CFLAGS) -o $@ hello.o $l
 button:	 button.o	; $(CC) $(CFLAGS) -o $@ button.o $l

@@ -8,7 +8,7 @@ value	= $(c:.c=.o)
 all:		$t
 clean:				; rm -f $t *.o
 
-test::		value		; echo 'let a = sin(1) + PI' | value
+test::		value		; echo 'let a = sin(1) + PI' | $(PWD)/value
 
 value:		$(value)	; $(CC) $(CFLAGS) -o $@ $(value) $(Lm)
 

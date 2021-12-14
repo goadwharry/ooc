@@ -11,9 +11,9 @@ circles	= circles.o Object.o Point.o Circle.o
 all:		$h $r $c $m $t
 clean:				; rm -f $t *.o
 
-test::		any		; any
-test::		points		; points p
-test::		circles		; circles p c
+test::		any		; $(PWD)/any
+test::		points		; $(PWD)/points p
+test::		circles		; $(PWD)/circles p c
 
 any:		$(any)		; $(CC) $(CFLAGS) -o $@ $(any)
 points:		$(points)	; $(CC) $(CFLAGS) -o $@ $(points)

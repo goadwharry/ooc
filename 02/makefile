@@ -10,8 +10,8 @@ atoms	= strings.o new.o Atom.o
 all:		$t
 clean:				; rm -f $t *.o
 
-test::		strings		; strings
-test::		atoms		; atoms
+test::		strings		; $(PWD)/strings
+test::		atoms		; $(PWD)/atoms
 
 strings:	$(strings)	; $(CC) $(CFLAGS) -o $@ $(strings)
 atoms:		$(atoms)	; $(CC) $(CFLAGS) -o $@ $(atoms)

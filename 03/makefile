@@ -10,9 +10,9 @@ infix	= parse.o infix.o
 all:		$t
 clean:				; rm -f $t *.o
 
-test::		postfix		; echo '2 * (3 + 4)' | postfix
-test::		value		; echo '2 * (3 + 4)' | value
-test::		infix		; echo '2 * (3 + 4)' | infix
+test::		postfix		; echo '2 * (3 + 4)' | $(PWD)/postfix
+test::		value		; echo '2 * (3 + 4)' | $(PWD)/value
+test::		infix		; echo '2 * (3 + 4)' | $(PWD)/infix
 
 postfix::	$(postfix)	; $(CC) $(CFLAGS) -o $@ $(postfix)
 value::		$(value)	; $(CC) $(CFLAGS) -o $@ $(value)

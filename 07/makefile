@@ -15,10 +15,10 @@ stacks	= stacks.o Object.o List.o Stack.o
 all:		$t
 clean:				; rm -f $c $h $r $t *.o
 
-test::		points		; points p
-test::		circles		; circles p c
-test::		queues		; queues +axel - +is +here . - . - .
-test::		stacks		; stacks +axel - +is +here . - . - .
+test::		points		; $(PWD)/points p
+test::		circles		; $(PWD)/circles p c
+test::		queues		; $(PWD)/queues +axel - +is +here . - . - .
+test::		stacks		; $(PWD)/stacks +axel - +is +here . - . - .
 
 points:		$(points)	; $(CC) $(CFLAGS) -o $@ $(points)
 circles:	$(circles)	; $(CC) $(CFLAGS) -o $@ $(circles)

@@ -9,8 +9,8 @@ bags	= main.o Bag.o
 all:		$t
 clean:				; rm -f $t *.o
 
-test::		sets		; sets
-test::		bags		; bags
+test::		sets		; $(PWD)/sets
+test::		bags		; $(PWD)/bags
 
 sets:		$(sets)		; $(CC) $(CFLAGS) -o $@ $(sets)
 bags:		$(bags)		; $(CC) $(CFLAGS) -o $@ $(bags)

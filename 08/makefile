@@ -13,9 +13,9 @@ lists	= lists.o Object.o List.o Point.o Circle.o
 all:		$t
 clean:				; rm -f $c $h $r $t *.o
 
-test::		circles		;  circles p c
-test::		lists		;- lists + +c +p . - 1234
-test::		lists		;- lists axel
+test::		circles		;  $(PWD)/circles p c
+test::		lists		;- $(PWD)/lists + +c +p . - 1234
+test::		lists		;- $(PWD)/lists axel
 
 circles:	$(circles)	; $(CC) $(CFLAGS) -o $@ $(circles)
 lists:		$(lists)	; $(CC) $(CFLAGS) -o $@ $(lists)

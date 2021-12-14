@@ -10,8 +10,8 @@ circles	= circles.o new.o Point.o Circle.o
 all:		$t
 clean:				; rm -f $t *.o
 
-test::		points		; points p
-test::		circles		; circles p c
+test::		points		; $(PWD)/points p
+test::		circles		; $(PWD)/circles p c
 
 points:		$(points)	; $(CC) $(CFLAGS) -o $@ $(points)
 circles:	$(circles)	; $(CC) $(CFLAGS) -o $@ $(circles)

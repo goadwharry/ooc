@@ -14,20 +14,20 @@ all:		$t
 clean:		; rm -f $c $(c:.c=.h) $r $t classes.? *.stb *.sym *.o
 		  rm -rf *.dSYM
 
-test::	except	;  except
-test::	value	;  echo 'let a = sin(1) + PI' | value
+test::	except	;  $(PWD)/except
+test::	value	;  echo 'let a = sin(1) + PI' | $(PWD)/value
 test::	value	;  { echo 'def sqr = $$ * $$'; \
 		     echo 'def one = sqr(sin($$)) + sqr(cos($$))'; \
 		     echo 'let n = one(10)'; \
-		     echo save; } | value
+		     echo save; } | $(PWD)/value
 test::	value	;  { echo load; \
-		     echo 'n + one(20)'; } | value
+		     echo 'n + one(20)'; } | $(PWD)/value
 test::	value	;  { echo let a = 1; \
 		     echo def f = a + 1; \
-		     echo save f; } | value
+		     echo save f; } | $(PWD)/value
 test::	value	;- { echo 'def a = 10 - $$'; \
 		     echo load f; \
-		     echo 'a(3)'; } | value
+		     echo 'a(3)'; } | $(PWD)/value
 
 except:	$(except) ; $(AWK) -f ../09/munch < /dev/null > classes.c
 		    $(CC) $(CFLAGS) -o $@ $(except) classes.c
